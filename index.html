@@ -14,7 +14,7 @@
         .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; }
         .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 25px auto; }
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 20px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1rem; min-height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; transform: rotate(-2deg); }
+        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; }
         .photo-card img { width: 100%; display: block; }
     </style>
 </head>
@@ -25,13 +25,16 @@
         <input type="text" id="pass" placeholder="كلمة السر هنا...">
         <button onclick="checkPass()">دخول ✨</button>
     </div>
+
     <div id="content" class="hidden" style="padding-bottom: 50px;">
-        <audio id="bgMusic" loop>
-            <source src="https://files.catbox.moe/pvh796.mp3" type="audio/mpeg">
+        <audio id="bgMusic" loop preload="auto">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         </audio>
+
         <div style="padding: 10px;">
             <h2 style="color: #ff416c;">بداية عمري معاكي ❤️</h2>
             <div class="counter" id="timer">بيعد...</div>
+            
             <p style="margin-top: 30px; font-weight: bold;">دوسي على القلوب دي بالترتيب 👇</p>
             <div class="card-grid">
                 <div class="flip-card" onclick="this.innerHTML='محبتش'">❤️ 1</div>
@@ -39,23 +42,30 @@
                 <div class="flip-card" onclick="this.innerHTML='ولا هحب حد'">❤️ 3</div>
                 <div class="flip-card" onclick="this.innerHTML='زي م حبيتك يروحقلبي'">❤️ 4</div>
             </div>
+
             <p style="margin-top: 40px; font-weight: bold;">صورنا عقبال ما نتقابل 😂</p>
-            <div class="photo-card" style="transform: rotate(2deg);"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
-            <div class="photo-card" style="transform: rotate(-2deg);"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
-            <div class="photo-card" style="transform: rotate(1deg);"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
-            <div class="photo-card" style="transform: rotate(-1deg);"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
+            
             <button onclick="showMessage()" style="margin-top: 30px;">دوس هنا 💌</button>
         </div>
     </div>
+
     <script>
         function checkPass() {
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                document.getElementById('bgMusic').play();
+                var audio = document.getElementById('bgMusic');
+                audio.play().catch(function(error) {
+                    console.log("Audio play failed: ", error);
+                });
                 startTimer();
             } else { alert('كلمة السر غلط يا روحي!'); }
         }
+
         function startTimer() {
             const startDate = new Date("March 24, 2026 06:00:00").getTime();
             setInterval(function() {
@@ -68,6 +78,7 @@
                 document.getElementById("timer").innerHTML = `${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية`;
             }, 1000);
         }
+
         function showMessage() { 
             alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض ❤️'); 
         }
