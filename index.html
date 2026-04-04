@@ -12,10 +12,11 @@
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
         button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; }
         .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; }
-        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 25px auto; }
-        .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 20px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1rem; min-height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; transform: rotate(-2deg); }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; }
+        .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; }
         .photo-card img { width: 100%; display: block; }
+        .section-title { margin-top: 30px; font-weight: bold; color: #ffeb3b; }
     </style>
 </head>
 <body>
@@ -35,12 +36,20 @@
             <h2 style="color: #ff416c;">بداية عمري معاكي ❤️</h2>
             <div class="counter" id="timer">بيعد...</div>
             
-            <p style="margin-top: 30px; font-weight: bold;">دوسي على القلوب دي بالترتيب 👇</p>
+            <p class="section-title">دوسي هنا الأول 👇</p>
             <div class="card-grid">
                 <div class="flip-card" onclick="this.innerHTML='اقفي هنا استني'">❤️ 1</div>
                 <div class="flip-card" onclick="this.innerHTML='بحبك'">❤️ 2</div>
                 <div class="flip-card" onclick="this.innerHTML='بموت فيكي'">❤️ 3</div>
                 <div class="flip-card" onclick="this.innerHTML='بعشقك'">❤️ 4</div>
+            </div>
+
+            <p class="section-title">وكملي هنا يا روحي 👇</p>
+            <div class="card-grid">
+                <div class="flip-card" onclick="this.innerHTML='محبتش'">❤️ 5</div>
+                <div class="flip-card" onclick="this.innerHTML='ولا بحب'">❤️ 6</div>
+                <div class="flip-card" onclick="this.innerHTML='ولا هحب حد'">❤️ 7</div>
+                <div class="flip-card" onclick="this.innerHTML='زي م حبيتك يصغنونتي'">❤️ 8</div>
             </div>
 
             <p style="margin-top: 40px; font-weight: bold;">صورنا عقبال ما نتقابل 😂</p>
@@ -58,10 +67,8 @@
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                
                 var audio = document.getElementById('bgMusic');
                 audio.play().catch(function(e) { console.log("Audio play blocked"); });
-                
                 startTimer();
             } else { alert('كلمة السر غلط يا روحي!'); }
         }
