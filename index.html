@@ -17,7 +17,7 @@
         .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; }
         .photo-card img { width: 100%; display: block; }
         
-        /* كود القلوب اللي بتنزل */
+        /* تأثير القلوب الطائرة */
         .heart-particle {
             position: fixed;
             top: -10%;
@@ -71,21 +71,27 @@
             <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
             
+            <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها اني حسيت اني بدأت بحبك كانت بتاريخ 29/3 الساعه 5.26</p></div>
+            
+            <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>دي اول مره اقولك فيها وحشتيني بس كنت بستعبط ع اني بحب واحده تانيه 😅❤️</p></div>
+            
             <button onclick="showMessage()">دوس هنا 💌</button>
         </div>
     </div>
 
     <script>
+        // دالة التحقق من كلمة السر وبدء التأثيرات
         function checkPass() {
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                document.getElementById('bgMusic').play();
-                startTimer();
-                startHearts(); // تشغيل القلوب
+                document.getElementById('bgMusic').play(); // تشغيل الأغنية
+                startTimer(); // بدء العداد
+                startHearts(); // بدء شلال القلوب
             } else { alert('كلمة السر غلط يا روحي!'); }
         }
 
+        // دالة إنشاء شلال القلوب الطائرة
         function startHearts() {
             const hearts = ['❤️', '💖', '💗', '💕', '✨'];
             setInterval(() => {
@@ -96,10 +102,11 @@
                 heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 heart.style.opacity = Math.random();
                 document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 5000);
+                setTimeout(() => heart.remove(), 5000); // إزالة القلب بعد انتهاء الأنميشن
             }, 300);
         }
 
+        // دالة العداد الزمني
         function startTimer() {
             const startDate = new Date("March 24, 2026 06:00:00").getTime();
             setInterval(function() {
@@ -113,6 +120,7 @@
             }, 1000);
         }
 
+        // دالة الرسالة النهائية (المنبثقة)
         function showMessage() { 
             alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض ❤️'); 
         }
