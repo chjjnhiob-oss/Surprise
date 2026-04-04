@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for Jomana ❤️</title>
+    <style>
+        /* ستايل رومانسي بقلوب وخلفية غامقة زي الفيديو */
+        body { background: #0f0c29; color: white; font-family: 'Arial', sans-serif; text-align: center; overflow-x: hidden; }
+        .hidden { display: none; }
+        .container { padding: 20px; }
+        input { padding: 10px; border-radius: 5px; border: none; margin-top: 10px; }
+        button { background: #ff4b2b; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        .photo-card { margin: 20px auto; max-width: 300px; border: 5px solid #fff; border-radius: 10px; overflow: hidden; background: #fff; color: #000; }
+        .photo-card img { width: 100%; height: auto; }
+        .counter { font-size: 1.5rem; color: #ff416c; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <div id="login" class="container">
+        <h1>Jomana</h1>
+        <p>اكتبي كلمة السر عشان تشوفي المفاجأة</p>
+        <input type="password" id="pass" placeholder="كلمة السر...">
+        <button onclick="checkPass()">دخول ❤️</button>
+    </div>
+
+    <div id="content" class="container hidden">
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            </audio>
+
+        <h3>يوم ما عرفنا بعض كان يوم 25/3 الساعة 6 الصبح</h3>
+        <div class="counter" id="timer">بداية عمري معاكي...</div>
+        <p>هيفضل شغال طول ما إحنا مع بعض</p>
+
+        <hr>
+        <h2>اقفي هنا متجريش 😂</h2>
+        <div class="buttons">
+            <button>بحبك ❤️</button> <button>بعشقك 😘</button> <button>بموت فيكي 😍</button>
+        </div>
+
+        <div class="photos">
+            <p>صورنا عقبال ما نتقابل 😂</p>
+            <div class="photo-card"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
+        </div>
+
+        <button onclick="alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض')">لسه مخلصتش دوسي هنا</button>
+    </div>
+
+    <script>
+        function checkPass() {
+            if(document.getElementById('pass').value === 'بحبك') {
+                document.getElementById('login').classList.add('hidden');
+                document.getElementById('content').classList.remove('hidden');
+                document.getElementById('bgMusic').play();
+                startTimer();
+            } else { alert('كلمة السر غلط يا قمر!'); }
+        }
+
+        function startTimer() {
+            const startDate = new Date("March 24, 2026 06:00:00").getTime();
+            setInterval(function() {
+                const now = new Date().getTime();
+                const diff = now - startDate;
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = `بداية عمري معاكي: ${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية`;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
