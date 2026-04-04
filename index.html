@@ -5,60 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise for Jomana ❤️</title>
     <style>
-        /* ستايل رومانسي بقلوب وخلفية غامقة زي الفيديو */
-        body { background: #0f0c29; color: white; font-family: 'Arial', sans-serif; text-align: center; overflow-x: hidden; }
+        body { background: #0f0c29; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 0; overflow-x: hidden; }
         .hidden { display: none; }
-        .container { padding: 20px; }
-        input { padding: 10px; border-radius: 5px; border: none; margin-top: 10px; }
-        button { background: #ff4b2b; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-        .photo-card { margin: 20px auto; max-width: 300px; border: 5px solid #fff; border-radius: 10px; overflow: hidden; background: #fff; color: #000; }
-        .photo-card img { width: 100%; height: auto; }
-        .counter { font-size: 1.5rem; color: #ff416c; margin: 20px 0; }
+        .container { padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, #24243e, #0f0c29); }
+        h1 { font-size: 3rem; color: #ff416c; text-shadow: 0 0 15px rgba(255, 65, 108, 0.7); }
+        input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
+        button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; }
+        .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 25px auto; }
+        .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 20px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 1rem; min-height: 60px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; transform: rotate(-2deg); }
+        .photo-card img { width: 100%; display: block; }
     </style>
 </head>
 <body>
 
     <div id="login" class="container">
         <h1>Jomana</h1>
-        <p>اكتبي كلمة السر عشان تشوفي المفاجأة</p>
-        <input type="password" id="pass" placeholder="كلمة السر...">
-        <button onclick="checkPass()">دخول ❤️</button>
+        <p>اكتبي كلمة السر يا قمر ❤️</p>
+        <input type="text" id="pass" placeholder="كلمة السر هنا...">
+        <button onclick="checkPass()">دخول ✨</button>
     </div>
 
-    <div id="content" class="container hidden">
+    <div id="content" class="hidden" style="padding-bottom: 50px;">
         <audio id="bgMusic" loop>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-            </audio>
+            <source src="https://files.catbox.moe/pvh796.mp3" type="audio/mpeg">
+        </audio>
 
-        <h3>يوم ما عرفنا بعض كان يوم 25/3 الساعة 6 الصبح</h3>
-        <div class="counter" id="timer">بداية عمري معاكي...</div>
-        <p>هيفضل شغال طول ما إحنا مع بعض</p>
+        <div style="padding: 10px;">
+            <h2 style="color: #ff416c;">بداية عمري معاكي ❤️</h2>
+            <div class="counter" id="timer">بيعد...</div>
+            
+            <p style="margin-top: 30px; font-weight: bold;">دوسي على القلوب دي بالترتيب 👇</p>
+            <div class="card-grid">
+                <div class="flip-card" onclick="this.innerHTML='محبتش'">❤️ 1</div>
+                <div class="flip-card" onclick="this.innerHTML='ولا بحب'">❤️ 2</div>
+                <div class="flip-card" onclick="this.innerHTML='ولا هحب حد'">❤️ 3</div>
+                <div class="flip-card" onclick="this.innerHTML='زي م حبيتك يروحقلبي'">❤️ 4</div>
+            </div>
 
-        <hr>
-        <h2>اقفي هنا متجريش 😂</h2>
-        <div class="buttons">
-            <button>بحبك ❤️</button> <button>بعشقك 😘</button> <button>بموت فيكي 😍</button>
+            <p style="margin-top: 40px; font-weight: bold;">صورنا عقبال ما نتقابل 😂</p>
+            <div class="photo-card" style="transform: rotate(2deg);"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
+            <div class="photo-card" style="transform: rotate(-2deg);"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
+            <div class="photo-card" style="transform: rotate(1deg);"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
+            <div class="photo-card" style="transform: rotate(-1deg);"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
+            
+            <button onclick="showMessage()" style="margin-top: 30px;">دوس هنا 💌</button>
         </div>
-
-        <div class="photos">
-            <p>صورنا عقبال ما نتقابل 😂</p>
-            <div class="photo-card"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
-        </div>
-
-        <button onclick="alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض')">لسه مخلصتش دوسي هنا</button>
     </div>
 
     <script>
         function checkPass() {
             if(document.getElementById('pass').value === 'بحبك') {
-                document.getElementById('login').classList.add('hidden');
+                document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                document.getElementById('bgMusic').play();
+                var audio = document.getElementById('bgMusic');
+                audio.play();
                 startTimer();
-            } else { alert('كلمة السر غلط يا قمر!'); }
+            } else { alert('كلمة السر غلط يا روحي!'); }
         }
 
         function startTimer() {
@@ -70,8 +74,12 @@
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                document.getElementById("timer").innerHTML = `بداية عمري معاكي: ${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية`;
+                document.getElementById("timer").innerHTML = `${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية`;
             }, 1000);
+        }
+
+        function showMessage() { 
+            alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض ❤️'); 
         }
     </script>
 </body>
