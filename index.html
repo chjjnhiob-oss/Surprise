@@ -5,40 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise for Jomana ❤️</title>
     <style>
-        body { background: #0f0c29; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 0; overflow-x: hidden; position: relative; }
+        body { background: #0f0c29; color: white; font-family: 'Arial', sans-serif; text-align: center; margin: 0; padding: 0; overflow-x: hidden; }
         .hidden { display: none; }
-        .container { padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, #24243e, #0f0c29); position: relative; z-index: 10; }
+        .container { padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, #24243e, #0f0c29); position: relative; }
         h1 { font-size: 3rem; color: #ff416c; text-shadow: 0 0 15px rgba(255, 65, 108, 0.7); }
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
-        button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; transition: transform 0.2s; position: relative; z-index: 10; }
-        button:active { transform: scale(0.95); }
-        .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; position: relative; z-index: 10; }
-        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; position: relative; z-index: 10; }
-        
-        /* تأثير النبض للقلوب الثمانية */
-        @keyframes heartPulse { 
-            0% { transform: scale(1); } 
-            50% { transform: scale(1.05); } 
-            100% { transform: scale(1); } 
-        }
-        .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); animation: heartPulse 2s infinite ease-in-out; }
-        .flip-card:active { animation: none; transform: scale(0.95); }
-
-        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; position: relative; z-index: 10; }
+        button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; position: relative; }
+        .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; z-index: 100; position: relative; }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; z-index: 100; position: relative; }
+        .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; }
         .photo-card img { width: 100%; display: block; }
-        .section-title { margin-top: 30px; font-weight: bold; color: #ffeb3b; position: relative; z-index: 10; }
-
-        /* تأثير القلوب الطائرة */
-        .falling-hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .heart { position: absolute; font-size: 20px; color: #ff416c; opacity: 0.7; animation: fall linear infinite; }
-        @keyframes fall {
-            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) translateX(100px) rotate(360deg); opacity: 0; }
+        
+        /* كود القلوب اللي بتنزل */
+        .heart-particle {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 50;
+            animation: fallAnimation linear forwards;
+        }
+        @keyframes fallAnimation {
+            to { transform: translateY(110vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <audio id="bgMusic" loop preload="auto">
+    <audio id="bgMusic" loop>
         <source src="https://files.catbox.moe/fxgl26.mp3" type="audio/mpeg">
     </audio>
 
@@ -50,35 +45,33 @@
     </div>
 
     <div id="content" class="hidden" style="padding-bottom: 50px;">
-        <div id="heartsContainer" class="falling-hearts"></div>
-
         <div style="padding: 10px;">
             <h2 style="color: #ff416c;">بداية عمري معاكي ❤️</h2>
             <div class="counter" id="timer">بيعد...</div>
             
-            <p class="section-title">دوسي هنا الأول 👇</p>
+            <p style="font-weight: bold; color: #ffeb3b;">دوسي هنا الأول 👇</p>
             <div class="card-grid">
-                <div class="flip-card" onclick="revealText(this, 'اقفي هنا استني')">❤️ 1</div>
-                <div class="flip-card" onclick="revealText(this, 'بحبك')">❤️ 2</div>
-                <div class="flip-card" onclick="revealText(this, 'بموت فيكي')">❤️ 3</div>
-                <div class="flip-card" onclick="revealText(this, 'بعشقك')">❤️ 4</div>
+                <div class="flip-card" onclick="this.innerHTML='اقفي هنا استني'">❤️ 1</div>
+                <div class="flip-card" onclick="this.innerHTML='بحبك'">❤️ 2</div>
+                <div class="flip-card" onclick="this.innerHTML='بموت فيكي'">❤️ 3</div>
+                <div class="flip-card" onclick="this.innerHTML='بعشقك'">❤️ 4</div>
             </div>
 
-            <p class="section-title">وكملي هنا يا روحي 👇</p>
+            <p style="font-weight: bold; color: #ffeb3b; margin-top: 20px;">وكملي هنا يا روحي 👇</p>
             <div class="card-grid">
-                <div class="flip-card" onclick="revealText(this, 'محبتش')">❤️ 5</div>
-                <div class="flip-card" onclick="revealText(this, 'ولا بحب')">❤️ 6</div>
-                <div class="flip-card" onclick="revealText(this, 'ولا هحب حد')">❤️ 7</div>
-                <div class="flip-card" onclick="revealText(this, 'زي م حبيتك يصغنونتي')">❤️ 8</div>
+                <div class="flip-card" onclick="this.innerHTML='محبتش'">❤️ 5</div>
+                <div class="flip-card" onclick="this.innerHTML='ولا بحب'">❤️ 6</div>
+                <div class="flip-card" onclick="this.innerHTML='ولا هحب حد'">❤️ 7</div>
+                <div class="flip-card" onclick="this.innerHTML='زي م حبيتك يصغنونتي'">❤️ 8</div>
             </div>
 
             <p style="margin-top: 40px; font-weight: bold;">صورنا عقبال ما نتقابل 😂</p>
-            <div class="photo-card" style="transform: rotate(2deg);"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
-            <div class="photo-card" style="transform: rotate(-2deg);"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
-            <div class="photo-card" style="transform: rotate(1deg);"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
-            <div class="photo-card" style="transform: rotate(-1deg);"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
             
-            <button onclick="showMessage()" style="margin-top: 30px;">دوس هنا 💌</button>
+            <button onclick="showMessage()">دوس هنا 💌</button>
         </div>
     </div>
 
@@ -87,35 +80,24 @@
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                var audio = document.getElementById('bgMusic');
-                audio.play().catch(function(e) { console.log("Audio play blocked"); });
+                document.getElementById('bgMusic').play();
                 startTimer();
-                createHearts(); // بدء تأثير القلوب الطائرة
+                startHearts(); // تشغيل القلوب
             } else { alert('كلمة السر غلط يا روحي!'); }
         }
 
-        // دالة لإظهار النص وإيقاف النبض بعد الضغط
-        function revealText(element, text) {
-            element.innerHTML = text;
-            element.style.animation = 'none'; // إيقاف النبض
-            element.style.background = 'linear-gradient(45deg, #ffeb3b, #ff9800)'; // تغيير اللون للتأكيد
-            element.style.color = '#333';
-        }
-
-        // إنشاء القلوب الطائرة
-        function createHearts() {
-            const container = document.getElementById('heartsContainer');
-            const heartTypes = ['❤️', '💖', '💗', '💕'];
-            for (let i = 0; i < 50; i++) {
+        function startHearts() {
+            const hearts = ['❤️', '💖', '💗', '💕', '✨'];
+            setInterval(() => {
                 const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                heart.className = 'heart-particle';
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
                 heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 3 + 2) + 's'; // مدة النزول عشوائية
-                heart.style.opacity = Math.random() * 0.5 + 0.3; // الشفافية عشوائية
-                heart.style.fontSize = (Math.random() * 10 + 15) + 'px'; // الحجم عشوائي
-                container.appendChild(heart);
-            }
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.opacity = Math.random();
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
         }
 
         function startTimer() {
@@ -127,7 +109,7 @@
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                document.getElementById("timer").innerHTML = `${days} يوم و ${hours} ساعة و ${minutes} دقيقة و ${seconds} ثانية`;
+                document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة و " + seconds + " ثانية";
             }, 1000);
         }
 
