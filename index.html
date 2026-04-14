@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -16,20 +16,8 @@
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; }
         .photo-card img { width: 100%; display: block; }
-        
-        /* تأثير القلوب الطائرة */
-        .heart-particle {
-            position: fixed;
-            top: -10%;
-            font-size: 20px;
-            user-select: none;
-            pointer-events: none;
-            z-index: 50;
-            animation: fallAnimation linear forwards;
-        }
-        @keyframes fallAnimation {
-            to { transform: translateY(110vh) rotate(360deg); }
-        }
+        .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
+        @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -65,14 +53,18 @@
                 <div class="flip-card" onclick="this.innerHTML='زي م حبيتك يصغنونتي'">❤️ 8</div>
             </div>
 
-            <p style="margin-top: 40px; font-weight: bold;">صورنا عقبال ما نتقابل 😂</p>
+            <p style="margin-top: 40px; font-weight: bold;">صورنا وأخيراً نورتيني ❤️</p>
             <div class="photo-card"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
             
-            <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها اني حسيت اني بدأت بحبك كانت بتاريخ 29/3 الساعه 5.26</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/pvNj5yHs/1776172110410.png"><p>أجمل يوم في حياتي لما شوفتك أخيراً ❤️ 14/4/2026</p></div>
             
+            <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 30px 0;">
+            <p style="font-weight: bold;">ذكرياتنا اللي مش بننساها 💌</p>
+
+            <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها اني حسيت اني بدأت بحبك كانت بتاريخ 29/3 الساعة 5.26</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>دي اول مره اقولك فيها وحشتيني بس كنت بستعبط ع اني بحب واحده تانيه 😅❤️</p></div>
             
             <button onclick="showMessage()">دوس هنا 💌</button>
@@ -80,18 +72,14 @@
     </div>
 
     <script>
-        // دالة التحقق من كلمة السر وبدء التأثيرات
         function checkPass() {
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                document.getElementById('bgMusic').play(); // تشغيل الأغنية
-                startTimer(); // بدء العداد
-                startHearts(); // بدء شلال القلوب
+                document.getElementById('bgMusic').play(); 
+                startTimer(); startHearts(); 
             } else { alert('كلمة السر غلط يا روحي!'); }
         }
-
-        // دالة إنشاء شلال القلوب الطائرة
         function startHearts() {
             const hearts = ['❤️', '💖', '💗', '💕', '✨'];
             setInterval(() => {
@@ -102,11 +90,9 @@
                 heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 heart.style.opacity = Math.random();
                 document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 5000); // إزالة القلب بعد انتهاء الأنميشن
+                setTimeout(() => heart.remove(), 5000); 
             }, 300);
         }
-
-        // دالة العداد الزمني
         function startTimer() {
             const startDate = new Date("March 24, 2026 06:00:00").getTime();
             setInterval(function() {
@@ -119,8 +105,6 @@
                 document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة و " + seconds + " ثانية";
             }, 1000);
         }
-
-        // دالة الرسالة النهائية (المنبثقة)
         function showMessage() { 
             alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض ❤️'); 
         }
