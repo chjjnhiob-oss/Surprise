@@ -1,4 +1,4 @@
-<!DOCTYPE html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +16,10 @@
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; }
         .photo-card img { width: 100%; display: block; }
+        /* ستايل الصورة الجديدة */
+        .special-photo { margin: 30px auto; width: 90%; max-width: 400px; padding: 15px; background: rgba(255, 255, 255, 0.1); border-radius: 25px; border: 2px dashed #ff416c; z-index: 100; position: relative; }
+        .special-photo img { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .special-text { color: #ffeb3b; font-size: 1.5rem; font-weight: bold; margin-top: 15px; text-shadow: 0 0 10px rgba(255, 235, 59, 0.5); }
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
@@ -66,6 +70,11 @@
 
             <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها اني حسيت اني بدأت بحبك كانت بتاريخ 29/3 الساعة 5.26</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>دي اول مره اقولك فيها وحشتيني بس كنت بستعبط ع اني بحب واحده تانيه 😅❤️</p></div>
+
+            <div class="special-photo">
+                <img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg" alt="Together Forever">
+                <div class="special-text">ايدي ف ايدك دايما ♥️😘</div>
+            </div>
             
             <button onclick="showMessage()">دوس هنا 💌</button>
         </div>
