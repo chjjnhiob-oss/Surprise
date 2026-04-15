@@ -17,10 +17,14 @@
         .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; }
         .photo-card img { width: 100%; display: block; }
         
-        /* تنسيق قسم الفيديو الجديد */
-        .video-section { margin: 30px auto; width: 90%; max-width: 400px; padding: 15px; background: rgba(255, 255, 255, 0.1); border-radius: 25px; border: 2px solid #ff416c; z-index: 100; position: relative; box-shadow: 0 10px 30px rgba(255, 65, 108, 0.3); }
+        /* تنسيق قسم الذكرى الخاصة الجديد */
+        .special-memory-section { margin: 30px auto; width: 90%; max-width: 400px; padding: 10px; z-index: 100; position: relative; }
+        .special-photo { width: 100%; border-radius: 20px; border: 3px solid #ff416c; box-shadow: 0 8px 20px rgba(0,0,0,0.3); margin-bottom: 20px; }
+        
+        .special-video-container { width: 100%; padding: 10px; background: rgba(255, 255, 255, 0.1); border-radius: 20px; border: 2px solid #ffeb3b; box-shadow: 0 10px 30px rgba(255, 235, 59, 0.3); }
         video { width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-        .special-text { color: #ffeb3b; font-size: 1.4rem; font-weight: bold; margin-top: 15px; text-shadow: 0 0 10px rgba(255, 235, 59, 0.5); }
+        
+        .special-text { color: #ff416c; font-size: 1.6rem; font-weight: bold; margin-top: 15px; text-shadow: 0 0 10px rgba(255, 65, 108, 0.5); }
 
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
@@ -73,11 +77,17 @@
             <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها اني حسيت اني بدأت بحبك كانت بتاريخ 29/3 الساعة 5.26</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>دي اول مره اقولك فيها وحشتيني بس كنت بستعبط ع اني بحب واحده تانيه 😅❤️</p></div>
 
-            <div class="video-section">
-                <video controls>
-                    <source src="https://files.catbox.moe/98gazk.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                </video>
+            <div class="special-memory-section">
+                <img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg" alt="Together Forever" class="special-photo">
+                
+                <div class="special-video-container">
+                    <video controls>
+                        <source src="https://files.catbox.moe/98gazk.mp4" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
+                }
+                </div>
+                
                 <div class="special-text">ايدي ف ايدك دايما ♥️😘</div>
             </div>
             
