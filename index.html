@@ -18,10 +18,14 @@
         .photo-card img { width: 100%; display: block; }
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
+        
+        /* تنسيق مشغل الفيديو الجديد */
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); margin-top: 15px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     </style>
 </head>
 <body>
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop preload="auto">
         <source src="https://files.catbox.moe/ufbk86.mp3" type="audio/mpeg">
     </audio>
 
@@ -69,14 +73,13 @@
             <div class="photo-card">
                 <img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg">
                 <p>ايدي ف ايدك دايما ♥️😘</p>
-            </div>
-
-            <div style="margin: 20px auto; width: 85%; max-width: 350px; background: #fff; border-radius: 10px; padding: 10px; color: #333;">
-                <video width="100%" controls playsinline preload="auto" style="border-radius: 5px; background: #000;">
-                    <source src="https://files.catbox.moe/98gazk.mp4" type="video/mp4">
-                    الفيديو مش شغال.. جرب متصفح تاني.
-                </video>
-                <p style="font-weight: bold; margin-top: 5px;">أحلى ذكرى ❤️</p>
+                
+                <div style="padding: 10px; background: #f9f9f9;">
+                    <div class="video-wrapper">
+                        <iframe src="https://streamable.com/e/x94zgd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    </div>
+                    <p style="font-weight: bold; margin-top: 10px; color: #ff416c;">أحلى ذكرى لينا ❤️</p>
+                </div>
             </div>
             
             <button onclick="showMessage()">دوس هنا 💌</button>
