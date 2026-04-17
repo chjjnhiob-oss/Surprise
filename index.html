@@ -12,7 +12,7 @@
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
         button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; position: relative; }
         
-        /* زرار القلب النابض */
+        /* تصميم زرار القلب */
         #music-trigger {
             background: none;
             border: none;
@@ -24,7 +24,6 @@
         }
         #music-trigger span { font-size: 60px; display: block; }
         #music-trigger p { color: #ffeb3b; font-weight: bold; margin-top: 15px; font-size: 1.2rem; }
-        
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.15); }
@@ -94,10 +93,27 @@
                 <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها وحشتيني ❤️</p></div>
 
                 <div class="photo-card">
-                    <video controls playsinline preload="metadata">
+                    <video controls playsinline preload="auto">
                         <source src="old.mp4" type="video/mp4">
+                        <source src="old.mp4.mp4" type="video/mp4">
                     </video>
                     <p>أحلى ذكرى لينا ❤️</p>
+                </div>
+
+                <div class="photo-card">
+                    <video controls playsinline preload="auto">
+                        <source src="vid1.mp4" type="video/mp4">
+                        <source src="vid1.mp4.mp4" type="video/mp4">
+                    </video>
+                    <p>فيديو مفاجأة 1 ❤️</p>
+                </div>
+
+                <div class="photo-card">
+                    <video controls playsinline preload="auto">
+                        <source src="vid2.mp4" type="video/mp4">
+                        <source src="vid2.mp4.mp4" type="video/mp4">
+                    </video>
+                    <p>فيديو مفاجأة 2 ❤️</p>
                 </div>
                 
                 <button onclick="showMessage()">دوس هنا 💌</button>
@@ -110,18 +126,15 @@
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                // تحميل الأغنية مسبقاً بمجرد الدخول
-                document.getElementById('bgMusic').load();
-            } else { 
-                alert('كلمة السر غلط يا روحي!'); 
-            }
+                document.getElementById('bgMusic').load(); 
+            } else { alert('كلمة السر غلط يا روحي!'); }
         }
 
         function startEverything() {
             var audio = document.getElementById('bgMusic');
-            audio.play();
-            document.getElementById('music-trigger').style.display = 'none';
-            document.getElementById('main-content').classList.remove('hidden');
+            audio.play(); // تشغيل الأغنية
+            document.getElementById('music-trigger').style.display = 'none'; // إخفاء القلب
+            document.getElementById('main-content').classList.remove('hidden'); // إظهار باقي الحاجات
             startTimer(); 
             startHearts(); 
         }
