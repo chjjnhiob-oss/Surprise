@@ -11,6 +11,11 @@
         h1 { font-size: 3rem; color: #ff416c; text-shadow: 0 0 15px rgba(255, 65, 108, 0.7); }
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
         button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; position: relative; }
+        
+        /* شكل مشغل الأغنية عشان الأيفون يرضى يشغلها */
+        .music-player-container { background: rgba(255, 65, 108, 0.1); padding: 20px; border-radius: 20px; border: 1px dashed #ff416c; margin-bottom: 20px; width: 90%; max-width: 400px; }
+        audio { width: 100%; height: 40px; margin-top: 10px; }
+
         .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; z-index: 100; position: relative; }
         .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; z-index: 100; position: relative; }
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
@@ -22,9 +27,6 @@
     </style>
 </head>
 <body>
-    <audio id="bgMusic" loop preload="auto" playsinline>
-        <source src="https://files.catbox.moe/wuxvic.mp3" type="audio/mpeg">
-    </audio>
 
     <div id="login" class="container">
         <h1>Jomana</h1>
@@ -34,7 +36,15 @@
     </div>
 
     <div id="content" class="hidden" style="padding-bottom: 50px;">
-        <div style="padding: 10px;">
+        <div style="padding: 10px; display: flex; flex-direction: column; align-items: center;">
+            
+            <div class="music-player-container">
+                <p style="color: #ffeb3b; font-weight: bold; margin: 0;">شغلي الأغنية من هنا يا روحي ❤️</p>
+                <audio id="bgMusic" controls playsinline loop>
+                    <source src="https://docs.google.com/uc?export=download&id=1Uh0YkjSlN0jvWKnaPbNynGrhLbMS4nTC" type="audio/mpeg">
+                </audio>
+            </div>
+
             <h2 style="color: #ff416c;">بداية عمري معاكي ❤️</h2>
             <div class="counter" id="timer">بيعد...</div>
             
@@ -99,25 +109,6 @@
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                
-                // التعديل الجوهري لتشغيل الصوت على الأيفون
-                var audio = document.getElementById('bgMusic');
-                
-                // محاولة التشغيل
-                var playPromise = audio.play();
-
-                if (playPromise !== undefined) {
-                    playPromise.then(_ => {
-                        // اشتغلت تمام
-                    }).catch(error => {
-                        // لو سفاري لسه معترض، بنشغلها مع أول لمسة للصفحة بعد الدخول
-                        console.log("Waiting for touch to play audio");
-                        document.addEventListener('touchstart', function() {
-                            audio.play();
-                        }, {once: true});
-                    });
-                }
-
                 startTimer(); 
                 startHearts(); 
             } else { 
@@ -133,7 +124,6 @@
                 heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                heart.style.opacity = Math.random();
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 5000); 
             }, 300);
