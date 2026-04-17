@@ -14,16 +14,11 @@
         .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; z-index: 100; position: relative; }
         .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; z-index: 100; position: relative; }
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; }
+        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; overflow: hidden; }
         .photo-card img { width: 100%; display: block; }
+        video { width: 100%; display: block; background: #000; border-radius: 5px; }
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
-        
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); margin-top: 15px; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        
-        /* تنسيق مشغل الفيديو للأيفون */
-        video { width: 100%; display: block; border-radius: 5px; background: #000; }
     </style>
 </head>
 <body>
@@ -51,7 +46,6 @@
                 <div class="flip-card" onclick="this.innerHTML='بعشقك'">❤️ 4</div>
             </div>
 
-            <p style="font-weight: bold; color: #ffeb3b; margin-top: 20px;">وكملي هنا يا روحي 👇</p>
             <div class="card-grid">
                 <div class="flip-card" onclick="this.innerHTML='محبتش'">❤️ 5</div>
                 <div class="flip-card" onclick="this.innerHTML='ولا بحب'">❤️ 6</div>
@@ -69,32 +63,28 @@
             <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 30px 0;">
             <p style="font-weight: bold;">ذكرياتنا اللي مش بننساها 💌</p>
 
-            <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها اني حسيت اني بدأت بحبك كانت بتاريخ 29/3 الساعة 5.26</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>دي اول مره اقولك فيها وحشتيني بس كنت بستعبط ع اني بحب واحده تانيه 😅❤️</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>29/3 الساعة 5.26 ❤️</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها وحشتيني ❤️</p></div>
 
             <div class="photo-card">
-                <img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg">
-                <p>ايدي ف ايدك دايما ♥️😘</p>
-                <div style="padding: 10px; background: #f9f9f9;">
-                    <div class="video-wrapper">
-                        <iframe src="https://streamable.com/e/x94zgd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                    </div>
-                    <p style="font-weight: bold; margin-top: 10px; color: #ff416c;">أحلى ذكرى لينا ❤️</p>
-                </div>
+                <video controls playsinline preload="auto">
+                    <source src="old.mp4" type="video/mp4">
+                </video>
+                <p>أحلى ذكرى لينا ❤️</p>
             </div>
 
             <div class="photo-card">
-                <video controls playsinline preload="metadata">
-                    <source src="https://files.catbox.moe/f8fmzt.mp4" type="video/mp4">
+                <video controls playsinline preload="auto">
+                    <source src="vid1.mp4" type="video/mp4">
                 </video>
-                <p>فيديو لينا 1 ❤️</p>
+                <p>فيديو مفاجأة 1 ❤️</p>
             </div>
 
             <div class="photo-card">
-                <video controls playsinline preload="metadata">
-                    <source src="https://files.catbox.moe/a20c09.mp4" type="video/mp4">
+                <video controls playsinline preload="auto">
+                    <source src="vid2.mp4" type="video/mp4">
                 </video>
-                <p>فيديو لينا 2 ❤️</p>
+                <p>فيديو مفاجأة 2 ❤️</p>
             </div>
             
             <button onclick="showMessage()">دوس هنا 💌</button>
