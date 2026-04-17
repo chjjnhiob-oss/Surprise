@@ -19,9 +19,9 @@
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
         
-        /* تنسيق مشغل الفيديو الجديد */
+        /* تنسيق مشغل الفيديو */
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); margin-top: 15px; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .video-wrapper iframe, .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     </style>
 </head>
 <body>
@@ -80,6 +80,24 @@
                     </div>
                     <p style="font-weight: bold; margin-top: 10px; color: #ff416c;">أحلى ذكرى لينا ❤️</p>
                 </div>
+            </div>
+
+            <div class="photo-card">
+                <div class="video-wrapper">
+                    <video controls playsinline webkit-playsinline>
+                        <source src="https://files.catbox.moe/f8fmzt.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p>فيديو مفاجأة 1 ❤️</p>
+            </div>
+
+            <div class="photo-card">
+                <div class="video-wrapper">
+                    <video controls playsinline webkit-playsinline>
+                        <source src="https://files.catbox.moe/a20c09.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p>فيديو مفاجأة 2 ❤️</p>
             </div>
             
             <button onclick="showMessage()">دوس هنا 💌</button>
