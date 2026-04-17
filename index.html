@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-    <audio id="bgMusic" loop preload="auto">
+    <audio id="bgMusic" loop preload="auto" playsinline>
         <source src="https://files.catbox.moe/5ljjqg.mp3" type="audio/mpeg">
     </audio>
 
@@ -58,7 +58,6 @@
             <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
-            
             <div class="photo-card"><img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg"><p>ايدي ف ايدك دايما ♥️😘</p></div>
             
             <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 30px 0;">
@@ -100,10 +99,32 @@
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                document.getElementById('bgMusic').play(); 
-                startTimer(); startHearts(); 
-            } else { alert('كلمة السر غلط يا روحي!'); }
+                
+                // التعديل الجوهري لتشغيل الصوت على الأيفون
+                var audio = document.getElementById('bgMusic');
+                
+                // محاولة التشغيل
+                var playPromise = audio.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        // اشتغلت تمام
+                    }).catch(error => {
+                        // لو سفاري لسه معترض، بنشغلها مع أول لمسة للصفحة بعد الدخول
+                        console.log("Waiting for touch to play audio");
+                        document.addEventListener('touchstart', function() {
+                            audio.play();
+                        }, {once: true});
+                    });
+                }
+
+                startTimer(); 
+                startHearts(); 
+            } else { 
+                alert('كلمة السر غلط يا روحي!'); 
+            }
         }
+
         function startHearts() {
             const hearts = ['❤️', '💖', '💗', '💕', '✨'];
             setInterval(() => {
@@ -117,8 +138,8 @@
                 setTimeout(() => heart.remove(), 5000); 
             }, 300);
         }
+
         function startTimer() {
-            // الوقت المظبوط (24 مارس الساعة 6 صباحاً)
             const startDate = new Date("March 24, 2026 06:00:00").getTime();
             setInterval(function() {
                 const now = new Date().getTime();
@@ -130,6 +151,7 @@
                 document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة و " + seconds + " ثانية";
             }, 1000);
         }
+
         function showMessage() { 
             alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض ❤️'); 
         }
