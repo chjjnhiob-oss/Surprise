@@ -16,7 +16,7 @@
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; overflow: hidden; }
         .photo-card img { width: 100%; display: block; }
-        video { width: 100%; display: block; background: #000; border-radius: 5px; }
+        video { width: 100%; display: block; background: #000; border-radius: 5px; min-height: 200px; }
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
@@ -114,7 +114,7 @@
             }, 300);
         }
         function startTimer() {
-            const startDate = new Date("March 24, 2026 06:00:00").getTime();
+            const startDate = new Date("March 29, 2026 05:26:00").getTime();
             setInterval(function() {
                 const now = new Date().getTime();
                 const diff = now - startDate;
