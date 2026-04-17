@@ -10,31 +10,31 @@
         .container { padding: 20px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle, #24243e, #0f0c29); position: relative; }
         h1 { font-size: 3rem; color: #ff416c; text-shadow: 0 0 15px rgba(255, 65, 108, 0.7); }
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
-        button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; position: relative; }
+        button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; }
         
-        /* تصميم زرار القلب اللي هيحل مشكلة الأيفون */
-        #heart-btn {
-            background: none; border: none; cursor: pointer;
-            animation: pulse 1.5s infinite; margin: 20px auto; display: block;
+        /* تصميم مشغل الأغنية للأيفون */
+        .music-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px dashed #ff416c;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
         }
-        #heart-btn span { font-size: 80px; }
-        #heart-btn p { color: #ffeb3b; font-weight: bold; margin-top: 10px; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-
-        .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; z-index: 100; position: relative; }
-        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; z-index: 100; position: relative; }
-        .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; overflow: hidden; }
+        audio { width: 100%; height: 45px; margin-top: 15px; }
+        
+        .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; }
+        .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; }
+        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; overflow: hidden; }
         .photo-card img { width: 100%; display: block; }
-        video { width: 100%; display: block; background: #000; border-radius: 5px; min-height: 200px; }
+        video { width: 100%; display: block; background: #000; border-radius: 5px; }
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
 <body>
-    <audio id="bgMusic" loop preload="auto" playsinline>
-        <source src="https://files.catbox.moe/wuxvic.mp3" type="audio/mpeg">
-    </audio>
 
     <div id="login" class="container">
         <h1>Jomana</h1>
@@ -43,11 +43,16 @@
         <button onclick="checkPass()">دخول ✨</button>
     </div>
 
-    <div id="unlock" class="container hidden">
-        <button id="heart-btn" onclick="startEverything()">
-            <span>❤️</span>
-            <p>دوسي هنا يا صغنونتي عشان الأغنية تشتغل ✨</p>
-        </button>
+    <div id="music-screen" class="container hidden">
+        <div class="music-box">
+            <h2 style="color: #ff416c;">يا روحي شغلي الأغنية دي الأول ❤️</h2>
+            <audio id="bgMusic" controls playsinline>
+                <source src="https://files.catbox.moe/wuxvic.mp3" type="audio/mpeg">
+                متصفحك لا يدعم الصوت
+            </audio>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #ffeb3b;">بعد ما تشغليها، دوسي تحت هنا 👇</p>
+            <button onclick="showSurprise()">فتحت الأغنية خلاص ✨</button>
+        </div>
     </div>
 
     <div id="content" class="hidden" style="padding-bottom: 50px;">
@@ -55,7 +60,6 @@
             <h2 style="color: #ff416c;">بداية عمري معاكي ❤️</h2>
             <div class="counter" id="timer">بيعد...</div>
             
-            <p style="font-weight: bold; color: #ffeb3b;">دوسي هنا الأول 👇</p>
             <div class="card-grid">
                 <div class="flip-card" onclick="this.innerHTML='اقفي هنا استني'">❤️ 1</div>
                 <div class="flip-card" onclick="this.innerHTML='بحبك'">❤️ 2</div>
@@ -63,25 +67,13 @@
                 <div class="flip-card" onclick="this.innerHTML='بعشقك'">❤️ 4</div>
             </div>
 
-            <div class="card-grid">
-                <div class="flip-card" onclick="this.innerHTML='محبتش'">❤️ 5</div>
-                <div class="flip-card" onclick="this.innerHTML='ولا بحب'">❤️ 6</div>
-                <div class="flip-card" onclick="this.innerHTML='ولا هحب حد'">❤️ 7</div>
-                <div class="flip-card" onclick="this.innerHTML='زي م حبيتك يصغنونتي'">❤️ 8</div>
-            </div>
-
             <p style="margin-top: 40px; font-weight: bold;">صورنا وأخيراً نورتيني ❤️</p>
-            <div class="photo-card"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"><p>بحبك يا نور عيني</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg"><p>ايدي ف ايدك دايما ♥️😘</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/677gP0Nf/IMG-20260404-032335-039.jpg"></div>
+            <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"></div>
+            <div class="photo-card"><img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg"></div>
             
             <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 30px 0;">
             <p style="font-weight: bold;">ذكرياتنا اللي مش بننساها 💌</p>
-
-            <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>29/3 الساعة 5.26 ❤️</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها وحشتيني ❤️</p></div>
 
             <div class="photo-card">
                 <video controls playsinline preload="auto">
@@ -115,16 +107,13 @@
         function checkPass() {
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
-                document.getElementById('unlock').classList.remove('hidden'); // إظهار زرار القلب
-                document.getElementById('bgMusic').load(); 
+                document.getElementById('music-screen').classList.remove('hidden');
             } else { alert('كلمة السر غلط يا روحي!'); }
         }
 
-        function startEverything() {
-            var audio = document.getElementById('bgMusic');
-            audio.play(); // تشغيل الأغنية بلمسة المستخدم (حل الأيفون)
-            document.getElementById('unlock').style.display = 'none';
-            document.getElementById('content').classList.remove('hidden'); // إظهار فيديوهاتك وكل حاجة
+        function showSurprise() {
+            document.getElementById('music-screen').style.display = 'none';
+            document.getElementById('content').classList.remove('hidden');
             startTimer(); 
             startHearts(); 
         }
@@ -149,9 +138,7 @@
                 const diff = now - startDate;
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة و " + seconds + " ثانية";
+                document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة";
             }, 1000);
         }
 
