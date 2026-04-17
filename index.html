@@ -11,8 +11,11 @@
         h1 { font-size: 3rem; color: #ff416c; text-shadow: 0 0 15px rgba(255, 65, 108, 0.7); }
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
         button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; position: relative; }
+        
+        /* صندوق الموسيقى المضمون للأيفون */
         .music-player-container { background: rgba(255, 65, 108, 0.1); padding: 20px; border-radius: 20px; border: 1px dashed #ff416c; margin-bottom: 20px; width: 90%; max-width: 400px; }
         audio { width: 100%; height: 40px; margin-top: 10px; }
+
         .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; z-index: 100; position: relative; }
         .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; z-index: 100; position: relative; }
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
@@ -38,7 +41,7 @@
             <div class="music-player-container">
                 <p style="color: #ffeb3b; font-weight: bold; margin: 0;">شغلي الأغنية من هنا يا روحي ❤️</p>
                 <audio id="bgMusic" controls playsinline loop>
-                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    <source src="https://www.dropbox.com/scl/fi/axg36rny7db5ns4uadbna/10.Khalik_Maaaya.mp3?rlkey=dr7tuu4icb0bojiuo1ypa2qgq&dl=1" type="audio/mpeg">
                 </audio>
             </div>
 
@@ -104,11 +107,9 @@
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
                 
-                // حركة الطوارئ: بنحاول نشغل الأغنية فوراً
+                // محاولة تشغيل تلقائي في الخلفية (اختياري للأيفون)
                 var audio = document.getElementById('bgMusic');
-                audio.play().catch(function(error) {
-                    console.log("iPhone needs a manual click on play button");
-                });
+                audio.play().catch(e => console.log("iPhone user needs to press Play button manually"));
 
                 startTimer(); 
                 startHearts(); 
@@ -135,7 +136,9 @@
                 const diff = now - startDate;
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة";
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة و " + seconds + " ثانية";
             }, 1000);
         }
 
