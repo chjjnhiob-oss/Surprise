@@ -69,6 +69,7 @@
             <div class="photo-card">
                 <video controls playsinline preload="auto">
                     <source src="old.mp4" type="video/mp4">
+                    <source src="old.mp4.mp4" type="video/mp4">
                 </video>
                 <p>أحلى ذكرى لينا ❤️</p>
             </div>
@@ -76,6 +77,7 @@
             <div class="photo-card">
                 <video controls playsinline preload="auto">
                     <source src="vid1.mp4" type="video/mp4">
+                    <source src="vid1.mp4.mp4" type="video/mp4">
                 </video>
                 <p>فيديو مفاجأة 1 ❤️</p>
             </div>
@@ -83,6 +85,7 @@
             <div class="photo-card">
                 <video controls playsinline preload="auto">
                     <source src="vid2.mp4" type="video/mp4">
+                    <source src="vid2.mp4.mp4" type="video/mp4">
                 </video>
                 <p>فيديو مفاجأة 2 ❤️</p>
             </div>
@@ -114,7 +117,8 @@
             }, 300);
         }
         function startTimer() {
-            const startDate = new Date("March 29, 2026 05:26:00").getTime();
+            // الوقت المظبوط (24 مارس الساعة 6 صباحاً)
+            const startDate = new Date("March 24, 2026 06:00:00").getTime();
             setInterval(function() {
                 const now = new Date().getTime();
                 const diff = now - startDate;
