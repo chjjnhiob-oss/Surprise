@@ -11,22 +11,19 @@
         h1 { font-size: 3rem; color: #ff416c; text-shadow: 0 0 15px rgba(255, 65, 108, 0.7); }
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
         button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; position: relative; }
-        
-        /* صندوق الموسيقى المضمون للأيفون */
-        .music-player-container { background: rgba(255, 65, 108, 0.1); padding: 20px; border-radius: 20px; border: 1px dashed #ff416c; margin-bottom: 20px; width: 90%; max-width: 400px; }
-        audio { width: 100%; height: 40px; margin-top: 10px; }
-
         .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; z-index: 100; position: relative; }
         .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 90%; margin: 15px auto; z-index: 100; position: relative; }
         .flip-card { background: linear-gradient(135deg, #ff416c, #ff4b2b); padding: 15px 5px; border-radius: 12px; cursor: pointer; font-weight: bold; font-size: 0.9rem; min-height: 50px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; overflow: hidden; }
-        .photo-card img { width: 100%; display: block; }
-        video { width: 100%; display: block; background: #000; border-radius: 5px; min-height: 200px; }
+        .photo-card { margin: 20px auto; width: 85%; max-width: 350px; border: 8px solid #fff; border-radius: 10px; background: #fff; color: #333; z-index: 100; position: relative; }
+        .photo-card img, .photo-card video { width: 100%; display: block; border-radius: 5px; }
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
     </style>
 </head>
 <body>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://files.catbox.moe/wuxvic.mp3" type="audio/mpeg">
+    </audio>
 
     <div id="login" class="container">
         <h1>Jomana</h1>
@@ -36,15 +33,7 @@
     </div>
 
     <div id="content" class="hidden" style="padding-bottom: 50px;">
-        <div style="padding: 10px; display: flex; flex-direction: column; align-items: center;">
-            
-            <div class="music-player-container">
-                <p style="color: #ffeb3b; font-weight: bold; margin: 0;">شغلي الأغنية من هنا يا روحي ❤️</p>
-                <audio id="bgMusic" controls playsinline loop>
-                    <source src="https://www.dropbox.com/scl/fi/axg36rny7db5ns4uadbna/10.Khalik_Maaaya.mp3?rlkey=dr7tuu4icb0bojiuo1ypa2qgq&dl=1" type="audio/mpeg">
-                </audio>
-            </div>
-
+        <div style="padding: 10px;">
             <h2 style="color: #ff416c;">بداية عمري معاكي ❤️</h2>
             <div class="counter" id="timer">بيعد...</div>
             
@@ -56,6 +45,7 @@
                 <div class="flip-card" onclick="this.innerHTML='بعشقك'">❤️ 4</div>
             </div>
 
+            <p style="font-weight: bold; color: #ffeb3b; margin-top: 20px;">وكملي هنا يا روحي 👇</p>
             <div class="card-grid">
                 <div class="flip-card" onclick="this.innerHTML='محبتش'">❤️ 5</div>
                 <div class="flip-card" onclick="this.innerHTML='ولا بحب'">❤️ 6</div>
@@ -68,31 +58,24 @@
             <div class="photo-card"><img src="https://i.ibb.co/wZ2hMKJX/IMG-20260404-010840-644.jpg"><p>أجمل بنوتة شافتها عيني</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/YTKY95gT/IMG-20260404-010852-638.jpg"><p>الصغنووونه بتاعتي</p></div>
             <div class="photo-card"><img src="https://i.ibb.co/JwRDkdnz/IMG-20260404-010845-209.jpg"><p>أنا والقمر</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg"><p>ايدي ف ايدك دايما ♥️😘</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/pvNj5yHs/1776172110410.png"><p>أجمل يوم في حياتي لما شوفتك أخيراً ❤️ 13/4/2026</p></div>
             
             <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 30px 0;">
             <p style="font-weight: bold;">ذكرياتنا اللي مش بننساها 💌</p>
 
             <div class="photo-card"><img src="https://i.ibb.co/5gRwK0Nz/Screenshot-2026-04-04-03-36-17-24-948cd9899890cbd5c2798760b2b95377.jpg"><p>29/3 الساعة 5.26 ❤️</p></div>
-            <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>اول مره اقولك فيها وحشتيني ❤️</p></div>
+            <div class="photo-card"><img src="https://i.ibb.co/MDkM0Cjg/Screenshot-2026-04-04-03-24-32-97-948cd9899890cbd5c2798760b2b95377.jpg"><p>دي اول مره اقولك فيها وحشتيني ❤️</p></div>
 
             <div class="photo-card">
                 <video controls playsinline preload="auto">
-                    <source src="old.mp4" type="video/mp4">
-                </video>
-                <p>أحلى ذكرى لينا ❤️</p>
-            </div>
-
-            <div class="photo-card">
-                <video controls playsinline preload="auto">
-                    <source src="vid1.mp4" type="video/mp4">
+                    <source src="https://files.catbox.moe/f8fmzt.mp4" type="video/mp4">
                 </video>
                 <p>فيديو مفاجأة 1 ❤️</p>
             </div>
 
             <div class="photo-card">
                 <video controls playsinline preload="auto">
-                    <source src="vid2.mp4" type="video/mp4">
+                    <source src="https://files.catbox.moe/a20c09.mp4" type="video/mp4">
                 </video>
                 <p>فيديو مفاجأة 2 ❤️</p>
             </div>
@@ -106,29 +89,23 @@
             if(document.getElementById('pass').value === 'بحبك') {
                 document.getElementById('login').style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
-                
-                // محاولة تشغيل تلقائي في الخلفية (اختياري للأيفون)
-                var audio = document.getElementById('bgMusic');
-                audio.play().catch(e => console.log("iPhone user needs to press Play button manually"));
-
-                startTimer(); 
-                startHearts(); 
+                document.getElementById('bgMusic').play(); 
+                startTimer(); startHearts(); 
             } else { alert('كلمة السر غلط يا روحي!'); }
         }
-
         function startHearts() {
-            const hearts = ['❤️', '💖', '✨'];
+            const hearts = ['❤️', '💖', '💗', '💕', '✨'];
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.className = 'heart-particle';
                 heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.opacity = Math.random();
                 document.body.appendChild(heart);
                 setTimeout(() => heart.remove(), 5000); 
             }, 300);
         }
-
         function startTimer() {
             const startDate = new Date("March 24, 2026 06:00:00").getTime();
             setInterval(function() {
@@ -141,7 +118,6 @@
                 document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة و " + seconds + " ثانية";
             }, 1000);
         }
-
         function showMessage() { 
             alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض ❤️'); 
         }
