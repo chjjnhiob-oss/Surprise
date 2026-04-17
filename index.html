@@ -19,12 +19,11 @@
         .heart-particle { position: fixed; top: -10%; font-size: 20px; user-select: none; pointer-events: none; z-index: 50; animation: fallAnimation linear forwards; }
         @keyframes fallAnimation { to { transform: translateY(110vh) rotate(360deg); } }
         
-        /* تنسيق مشغل الفيديو */
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.4); margin-top: 15px; }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
-        /* ستايل الفيديوهات الجديدة */
-        .direct-video { width: 100%; border-radius: 5px; display: block; background: #000; }
+        /* تنسيق مشغل الفيديو للأيفون */
+        video { width: 100%; display: block; border-radius: 5px; background: #000; }
     </style>
 </head>
 <body>
@@ -76,7 +75,6 @@
             <div class="photo-card">
                 <img src="https://i.ibb.co/27YnzV1d/Whats-App-Image-2026-04-15-at-4-22-48-PM.jpg">
                 <p>ايدي ف ايدك دايما ♥️😘</p>
-                
                 <div style="padding: 10px; background: #f9f9f9;">
                     <div class="video-wrapper">
                         <iframe src="https://streamable.com/e/x94zgd" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -86,17 +84,17 @@
             </div>
 
             <div class="photo-card">
-                <video class="direct-video" controls playsinline preload="metadata">
+                <video controls playsinline preload="metadata">
                     <source src="https://files.catbox.moe/f8fmzt.mp4" type="video/mp4">
                 </video>
-                <p>لحظة حلوة ❤️</p>
+                <p>فيديو لينا 1 ❤️</p>
             </div>
 
             <div class="photo-card">
-                <video class="direct-video" controls playsinline preload="metadata">
+                <video controls playsinline preload="metadata">
                     <source src="https://files.catbox.moe/a20c09.mp4" type="video/mp4">
                 </video>
-                <p>ذكرياتنا سوا ❤️</p>
+                <p>فيديو لينا 2 ❤️</p>
             </div>
             
             <button onclick="showMessage()">دوس هنا 💌</button>
@@ -130,4 +128,16 @@
             setInterval(function() {
                 const now = new Date().getTime();
                 const diff = now - startDate;
-                const days = Math.floor(diff / (10
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById("timer").innerHTML = days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة و " + seconds + " ثانية";
+            }, 1000);
+        }
+        function showMessage() { 
+            alert('جومانه ربنا يخليكي ليا وميحرمنيش منك ابدا يروح قلبي و يارب العمر كلو مع بعض ❤️'); 
+        }
+    </script>
+</body>
+</html>
