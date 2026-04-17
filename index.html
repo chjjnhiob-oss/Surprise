@@ -12,16 +12,8 @@
         input { padding: 12px; border-radius: 25px; border: 2px solid #ff416c; width: 80%; max-width: 300px; text-align: center; font-size: 1.1rem; background: rgba(255,255,255,0.1); color: white; outline: none; }
         button { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; border: none; padding: 12px 30px; border-radius: 25px; margin-top: 20px; cursor: pointer; font-size: 1.1rem; z-index: 100; }
         
-        /* تصميم مشغل الأغنية للأيفون */
-        .music-box {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px dashed #ff416c;
-            margin: 20px auto;
-            width: 80%;
-            max-width: 400px;
-        }
+        /* مشغل الأغنية من جوجل درايف */
+        .music-box { background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; border: 1px dashed #ff416c; margin: 20px auto; width: 85%; max-width: 400px; }
         audio { width: 100%; height: 45px; margin-top: 15px; }
         
         .counter { font-size: 1.3rem; color: #ffeb3b; margin: 20px 0; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; width: 85%; border: 1px solid rgba(255,255,255,0.1); display: inline-block; }
@@ -45,12 +37,12 @@
 
     <div id="music-screen" class="container hidden">
         <div class="music-box">
-            <h2 style="color: #ff416c;">يا روحي شغلي الأغنية دي الأول ❤️</h2>
+            <h2 style="color: #ff416c;">شغلي الأغنية دي الأول يا روحي ❤️</h2>
             <audio id="bgMusic" controls playsinline>
-                <source src="https://files.catbox.moe/wuxvic.mp3" type="audio/mpeg">
-                متصفحك لا يدعم الصوت
+                <source src="https://docs.google.com/uc?export=download&id=1Uh0YkjSlN0jvWKnaPbNynGrhLbMS4nTC" type="audio/mpeg">
+                متصفحك لا يدعم الصوت، جربي Chrome
             </audio>
-            <p style="margin-top: 20px; font-size: 0.9rem; color: #ffeb3b;">بعد ما تشغليها، دوسي تحت هنا 👇</p>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: #ffeb3b;">بعد ما تدوسي Play، دوسي تحت هنا 👇</p>
             <button onclick="showSurprise()">فتحت الأغنية خلاص ✨</button>
         </div>
     </div>
@@ -78,7 +70,6 @@
             <div class="photo-card">
                 <video controls playsinline preload="auto">
                     <source src="old.mp4" type="video/mp4">
-                    <source src="old.mp4.mp4" type="video/mp4">
                 </video>
                 <p>أحلى ذكرى لينا ❤️</p>
             </div>
@@ -86,7 +77,6 @@
             <div class="photo-card">
                 <video controls playsinline preload="auto">
                     <source src="vid1.mp4" type="video/mp4">
-                    <source src="vid1.mp4.mp4" type="video/mp4">
                 </video>
                 <p>فيديو مفاجأة 1 ❤️</p>
             </div>
@@ -94,7 +84,6 @@
             <div class="photo-card">
                 <video controls playsinline preload="auto">
                     <source src="vid2.mp4" type="video/mp4">
-                    <source src="vid2.mp4.mp4" type="video/mp4">
                 </video>
                 <p>فيديو مفاجأة 2 ❤️</p>
             </div>
